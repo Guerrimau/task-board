@@ -4,6 +4,7 @@ import React from "react";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { darkTheme, lightTheme } from "@/themes";
 import { UiProvider } from "@/context/ui";
+import { EntriesProvider } from "@/context/entries";
 
 interface Props {
   children: React.ReactNode;
@@ -12,10 +13,12 @@ interface Props {
 export function Providers({ children }: Props) {
   return (
     <UiProvider>
-      <ThemeProvider theme={darkTheme}>
-        <CssBaseline />
-        {children}
-      </ThemeProvider>
+      <EntriesProvider>
+        <ThemeProvider theme={darkTheme}>
+          <CssBaseline />
+          {children}
+        </ThemeProvider>
+      </EntriesProvider>
     </UiProvider>
   );
 }
