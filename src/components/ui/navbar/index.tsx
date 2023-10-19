@@ -9,7 +9,7 @@ export const Navbar = () => {
   const { openSideMenu } = useContext(UiContext);
 
   return (
-    <AppBar position="sticky" elevation={0}>
+    <AppBar position="static" elevation={0}>
       <Toolbar>
         <IconButton size="large" edge="start" onClick={openSideMenu}>
           <MenuOutlinedIcon />
