@@ -15,21 +15,21 @@ const ENTRIES_INITIAL_STATE: EntriesState = {
   entries: [
     {
       _id: uuid(),
-      description: "lorem",
+      description: "lorem pending",
       createdA: Date.now(),
       status: "Pending",
     },
     {
       _id: uuid(),
-      description: "lorem ipsum",
+      description: "lorem ipsum pe",
       createdA: Date.now() - 1000000,
-      status: "Pending",
+      status: "In-Progress",
     },
     {
       _id: uuid(),
-      description: "lorem",
+      description: "lorem finished",
       createdA: Date.now() - 100000,
-      status: "Pending",
+      status: "Finished",
     },
   ],
 };

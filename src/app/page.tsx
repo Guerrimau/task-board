@@ -1,12 +1,10 @@
-"use client";
-
 import {
   Card,
   CardContent,
   CardHeader,
   Grid,
 } from "@mui/material";
-import { EntryList } from "./components";
+import { EntryList } from "./components/entry-list";
 
 export default function Home() {
   return (
@@ -16,9 +14,9 @@ export default function Home() {
           <Card
             sx={{ height: "100%", display: "flex", flexDirection: "column" }}
           >
-            <CardHeader title="To do" />
+            <CardHeader title="Pending" />
             <CardContent sx={{ flex: 1 }}>
-              <EntryList />
+              <EntryList status="Pending" />
             </CardContent>
           </Card>
         </Grid>
@@ -26,9 +24,9 @@ export default function Home() {
           <Card
             sx={{ height: "100%", display: "flex", flexDirection: "column" }}
           >
-            <CardHeader title="Pending" />
+            <CardHeader title="In-Progress" />
             <CardContent sx={{ flex: 1 }}>
-              <EntryList />
+              <EntryList status="In-Progress" />
             </CardContent>
           </Card>
         </Grid>
@@ -38,7 +36,7 @@ export default function Home() {
           >
             <CardHeader title="Finished" />
             <CardContent sx={{ flex: 1 }}>
-              <EntryList />
+              <EntryList status="Finished" />
             </CardContent>
           </Card>
         </Grid>

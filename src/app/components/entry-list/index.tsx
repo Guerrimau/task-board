@@ -1,12 +1,24 @@
-import React from "react";
-import { List, Paper } from "@mui/material";
-import { EntryItem } from "..";
+"use client";
 
-export const EntryList = () => {
+import React, { useContext, useMemo } from "react";
+import { List, Paper } from "@mui/material";
+import { EntryStatus } from "@/interfaces";
+import { EntriesContext } from "@/context/entries";
+import { EntryItem } from "../entry-item";
+
+interface Props {
+  status: EntryStatus
+}
+
+export const EntryList = ({ status }: Props) => {
+  const { entries } = useContext(EntriesContext);
+
+  const entriesByStatus = useMemo(() => entries.filter(entry => entry.status === status), [entries, status]);
+
   return (
     <Paper
       sx={{
-        height: "calc(100%)",
+        height: "100%",
         overflow: "auto",
         bgcolor: "transparent",
         p: 1,
@@ -14,10 +26,7 @@ export const EntryList = () => {
     >
       {/* Todo: change opacity if drag is happening */}
       <List sx={{ opacity: 1 }}>
-        <EntryItem />
-        <EntryItem />
-        <EntryItem />
-        <EntryItem />
+        {entriesByStatus.map(entry => <EntryItem key={entry._id} entry={entry} />)}
       </List>
     </Paper>
   );
