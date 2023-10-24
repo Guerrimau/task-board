@@ -4,7 +4,7 @@ import {
   CardHeader,
   Grid,
 } from "@mui/material";
-import { EntryList } from "./components/entry-list";
+import { EntryList, NewEntry } from "./components";
 
 export default function Home() {
   return (
@@ -16,6 +16,7 @@ export default function Home() {
           >
             <CardHeader title="Pending" />
             <CardContent sx={{ flex: 1 }}>
+              <NewEntry />
               <EntryList status="Pending" />
             </CardContent>
           </Card>
