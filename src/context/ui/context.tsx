@@ -8,6 +8,9 @@ interface ContextProps {
 
     isAddingEntry: boolean;
     setIsAddingEntry: (isAdding: boolean) => void;
+
+    isDragging: boolean;
+    setIsDragging: (isDragging: boolean) => void;
 }
 
 

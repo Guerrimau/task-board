@@ -1,4 +1,6 @@
-import React from "react";
+"use client"
+
+import { DragEvent, useContext } from "react";
 import {
   Card,
   CardActionArea,
@@ -7,14 +9,29 @@ import {
   Typography,
 } from "@mui/material";
 import { Entry } from "@/interfaces";
+import { UiContext } from "@/context/ui";
 
 interface Props {
-  entry: Entry
+  entry: Entry;
 }
 
 export const EntryItem = ({ entry }: Props) => {
+
+  const { setIsDragging } = useContext(UiContext);
+
+  const onDragStart = (e: DragEvent) => {
+    e.dataTransfer.setData("test", entry._id);
+    setIsDragging(true);
+    //Todo: change state to indicate that isDragging
+  }
+
+  const onDragEnd = () => {
+    setIsDragging(false);
+    //todo: end drag
+  }
+
   return (
-    <Card sx={{ mb: 1 }} key={entry._id}>
+    <Card sx={{ mb: 1 }} key={entry._id} draggable onDragStart={onDragStart} onDragEnd={onDragEnd}>
       <CardActionArea>
         <CardContent>
           <Typography sx={{ whiteSpace: "pre-line" }}>
