@@ -26,7 +26,6 @@ export const EntryItem = ({ entry }: Props) => {
   }
 
   const onDragEnd = () => {
-    setIsDragging(false);
     //todo: end drag
   }
 
