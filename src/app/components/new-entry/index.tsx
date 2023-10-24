@@ -5,12 +5,14 @@ import { Button, Stack, TextField } from "@mui/material";
 import SaveIcon from "@mui/icons-material/Save";
 import AddIcon from "@mui/icons-material/Add";
 import { EntriesContext } from "@/context/entries";
+import { UiContext } from "@/context/ui";
 
 export const NewEntry = () => {
-  const [isAdding, setIsAdding] = useState(false);
+  
   const [inputValue, setInputValue] = useState("");
   const [isTouched, setIsTouched] = useState(false);
-
+  
+  const { isAddingEntry, setIsAddingEntry } = useContext(UiContext);
   const { addNewEntry } = useContext(EntriesContext);
 
   const onChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -18,23 +20,29 @@ export const NewEntry = () => {
   };
 
   const onAddNewEntry = () => {
-    setIsAdding(!isAdding);
+    setIsAddingEntry(!isAddingEntry);
   };
 
   const onCancel = () => {
-    setIsAdding(!isAdding);
+    resetToDefaultValues();
   };
 
   const onSave = () => {
+    if (inputValue.length === 0) return;
+
     addNewEntry(inputValue);
+    resetToDefaultValues();
+  };
+
+  const resetToDefaultValues = () => {
     setIsTouched(false);
-    setIsAdding(false);
+    setIsAddingEntry(false);
     setInputValue("");
   };
 
   return (
     <Stack spacing={1} sx={{ mb: 1 }}>
-      {isAdding ? (
+      {isAddingEntry ? (
         <>
           <TextField
             fullWidth
