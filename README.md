@@ -11,3 +11,12 @@ docker-compose up -d
 ```
 mongodb://localhost:27017/entriesdb
 ```f
+
+## Configure env variables
+Rename file __.env.template__ to __.env__
+
+## Fill database with mock data
+Use
+```
+GET | http://localhost/api/seed
+```
