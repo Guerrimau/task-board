@@ -9,7 +9,7 @@ const entrySchema = new Schema({
     status: {
         type: String,
         enum: {
-            values: ['pending', 'in-progress', "finished"],
+            values: ['Pending', 'In-Progress', "Finished"],
             message: '{VALUE} is not an allowed status'
         }
     }

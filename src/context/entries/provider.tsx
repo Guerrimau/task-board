@@ -12,26 +12,7 @@ export interface ProviderProps {
 }
 
 const ENTRIES_INITIAL_STATE: EntriesState = {
-  entries: [
-    {
-      _id: uuid(),
-      description: "lorem pending",
-      createdA: Date.now(),
-      status: "Pending",
-    },
-    {
-      _id: uuid(),
-      description: "lorem ipsum pe",
-      createdA: Date.now() - 1000000,
-      status: "In-Progress",
-    },
-    {
-      _id: uuid(),
-      description: "lorem finished",
-      createdA: Date.now() - 100000,
-      status: "Finished",
-    },
-  ],
+  entries: [],
 };
 
 export const EntriesProvider = ({ children }: ProviderProps) => {
